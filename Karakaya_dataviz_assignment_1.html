@@ -144,24 +144,24 @@
 		<script>
 			/*  I want to look at the number of Bosnians ho made claims for asylum in the European Union between the years of 1995-2004*
 			 /* More than 71,000 people from Bosnia Herzegovina made claims for asylum in the eu countries. */
-			var number = 71000;
+			var asylum_number = 71000;
 			/* My string will be Bosnians*/
-			var citizens = "Bosnians";
+			var origin_of_citizens = "Bosnians";
 			/*My boolean is on the features of coutries where Bosnians applied for asylum*/
 			var assylum_countries_muslim = false;
 			/*My list contains coutries where Bosnians applied for asylum */
 			var assylum_countries = ["Germany", "Austria", "Belgium", "UK", "Denmark", "Italy"];
 			/*These are the properties of countries received asylum from Bosnians */
-			/*If I got the assigmemt's second part of e(at least one of which must be a list, and another of which must be an object)*/
+			/*This is an object called features_assylum_countries. It has another object within called "specific_location" and list called "religion".*/
 			var features_assylum_countries = {
-				"location" : "Europe",
-				"economicstatus" : "wealthy",
-				"religion" : "Christian",
-				"population" : "slow growing"
-			}
-			Christian = ["Orthodox", "Protestant", {
-				"Catholic" : "Germans"
-			}]
+				"location" = "Europe",
+				"specific_location": {
+					"Eastern_Europe" : "Serbia", 
+					"Western_Europe" : "Germany"},
+				"economic_status" : "wealthy",
+				"population" : "slow growing",
+				"religion" : ["Orthodox", "Protestant", "Catholic"]
+				};
 
 			console.log(assylum_countries[0]);
 
