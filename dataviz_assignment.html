@@ -6,50 +6,59 @@
 
 		<link rel="stylesheet" href="style.css" />
 
-		<!--Load the JavaScript cpde from Google visualization library.-->
-		<!--Script example loaded from https://developers.google.com/chart/interactive/docs/quick_start -->
+		<!--With script tag, I will load script from Google library: https://developers.google.com/chart/interactive/docs/quick_start -->
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+		<!--The code will be loaded from Google Charts, called "current" which includes corechart package.-->
 		<script type="text/javascript">
 			google.charts.load('current', {
 				'packages' : ['corechart']
 			});
 
-			// When Google calls back with the contents of hte "corechart" package, execute the "drawChart" function
+			/* I am telling my code that when Google's code will be loaded, call back the corechart package*/
 
-			google.charts.setOnLoadCallback(drawChart);
+			google.charts.setOnLoadCallback(createChart);
 
-			// This is draChart function.
-			// It doesn't need any extra ingredients
-			// It draws a chart on the page
+			/* I changed the name of the function which was "drawChart" to "createChart" to have a chart.*/
 
-			function drawChart() {
+			function createChart() {
 
-				// Call on the data table recipe to make a new DataTable type.
-				var data = new google.visualization.DataTable();
-				// Add a column of string , labelled Toping
-				data.addColumn('string', 'Topping');
-				// Add a column of type number , labelled slices
-				data.addColumn('number', 'Slices');
-				//My rows must be a list of lists, with each item in the list having the same number of elements
-				//as I have columns
-				//and with the data types those that were declared in my "addColumn" function calls
-				data.addRows([['Mushrooms', 3], ['Onions', 1], ['Olives', 1], ['Zucchini', 1], ['Pepperoni', 2]]);
+				/* I called on the DataTable function to make a new DataTable based on 
+				 * Unaccompanied Allien Children (UAC) data from:https://www.acf.hhs.gov/orr/about/ucs/facts-and-data.*/
+				var UAC_data = new google.visualization.DataTable();
+				/* I made a column which is a string , it's name is "Country of Origin"*/
+				UAC_data.addColumn('string', 'Country of Origin');
+				/* I added a column type of which is number , labelled "Countries"*/
+				UAC_data.addColumn('number', 'Countries');
+				/*I added rows which is a list. It consists of name of the countries and percentage of children  
+				 coming from these countries. So each item in my initial list are also lists on their own.*/
+				
+				UAC_data.addRows([['Guatemala', 40], ['El Salvador', 34], ['Honduras', 21], ['Mexico', 3], ['All other countries', 2]]);
 
-				// Options object includes some customizatiom
-				//we will need to add this extensively to
-				//make visualizations we might actually want to publish
+				/*I will decide on the outline of my chart with a var.
+				 *Although my headline fails to be charming, it has a verb.
+				 *I also attempted to change the tags of width and height but then
+				 *my chart appared at the middle of the page. I didn't like it to be above my page like a sun
+				 *So I will the labels width and height as they are
+				 * I changed the width to have "all other countries" in a single line. */
 				var options = {
-					'title' : 'How Much Pizza I Ate Last Night',
-					'width' : 400,
+					'headline' : 'Numbers of unaccompanied minors arriving US border increased in 2016',
+					'width' : 600,
 					'height' : 300
 				};
 
-				// Creating a variable in which I am storing the result of calling the "pieChart" function
-				//I must pass that function the id of a dicv that exists on the html page
+				/* I will add another var to create my "pieChart". 
+				 * My pie chart needs to have a function called "getElementById "
+				 * so that I can place the chart in the page with a div that.
+				 * Obvisouly my chart will take the information from
+				 * my UAC_data and options that I have just decided on.
+				 * I will place my div to wherever I want this chart to appear. 
+				 * I chose somewhere in the middle of my first article.
+				 * I may have little problem as my research was on Bosnian refugees and
+				 * my chart will be Central American minors.*/
 
-				var chart = new google.visualization.PieChart(document.getElementById('chart_holder'));
-				chart.draw(data, options);
+				var visualization = new google.visualization.PieChart(document.getElementById('chart_place'));
+				visualization.draw(UAC_data, options);
 			}
 		</script>
 
@@ -58,13 +67,11 @@
 	<body>
 		<!-- My first article starts here. It was hard to find articles related with Bosnian and Croatian refugees in serbia. It seems there is not much reporting on this years-long issue. That's why i picked the most recent UNHCR project called "The Regional Housing Program." I  find the story which was one of our reading assignments and followed the link to the original source. The project page has a number of announcements in Bosnia and Serbia. I picked reconstructions of houses in Bosnia and take the photo inside of that story.What i was so annoyed is that i didn't know how to put space between paragraphs but the gods of internet helped me and I applied it basically every place possible. I used the image size, color and frame as we did in the class because I was afraid to mss it up.
 		-->
-		<!-- this is the div where i want my chart to appear-->
-		<div id="chart_holder"></div>
+		
 
 		<div class="title">
 			<a href="http://regionalhousingprogramme.org/bosnia-and-herzegovina-first-beneficiary-families-move-into-new-homes"> First families move into new homes in Bosnia two decades after the war </a>
 		</div>
-
 		<div>
 			<p>
 				The first returnee internally displaced families in Bosnia and Herzegovina moved into their newly reconstructed houses in April of 2016 under a housing program.
@@ -82,6 +89,8 @@
 			<p>
 				According to the UNHCR report, a total of 101 million euros from the Regional Housing Program has been committed to Bosnia and Herzegovina. Funding has been used to build homes for 5, 400 returnees, refugees and internally displaced people in Bosnia and Herzegovina. As part of the project, Serbia laid the foundation stone for the construction of the 235 apartments in last September. The project's Serbian part is expected to resolve the housing problems of more than 45,000 people who are living in Serbia.
 			</p>
+			<!-- this is the div where i want my chart to appear-->
+		<div id="chart_place"></div>
 		</div>
 		<div>
 			<p>
