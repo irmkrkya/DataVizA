@@ -17,22 +17,28 @@
 
 			/* I am telling my code that when Google's code will be loaded, call back the corechart package*/
 
-			google.charts.setOnLoadCallback(createChart);
+			google.charts.setOnLoadCallback(createAllCharts);
+
+			function createAllCharts() {
+
+				createChart1();
+				createChart2();
+			}
 
 			/* I changed the name of the function which was "drawChart" to "createChart" to have a chart.*/
 
-			function createChart() {
+			function createChart1() {
 
-				/* I called on the DataTable function to make a new DataTable based on 
+				/* I called on the DataTable function to make a new DataTable based on
 				 * Unaccompanied Allien Children (UAC) data from:https://www.acf.hhs.gov/orr/about/ucs/facts-and-data.*/
 				var UAC_data = new google.visualization.DataTable();
 				/* I made a column which is a string , it's name is "Country of Origin"*/
 				UAC_data.addColumn('string', 'Country of Origin');
 				/* I added a column type of which is number , labelled "Countries"*/
 				UAC_data.addColumn('number', 'Countries');
-				/*I added rows which is a list. It consists of name of the countries and percentage of children  
+				/*I added rows which is a list. It consists of name of the countries and percentage of children
 				 coming from these countries. So each item in my initial list are also lists on their own.*/
-				
+
 				UAC_data.addRows([['Guatemala', 40], ['El Salvador', 34], ['Honduras', 21], ['Mexico', 3], ['All other countries', 2]]);
 
 				/*I will decide on the outline of my chart with a var.
@@ -47,122 +53,179 @@
 					'height' : 300
 				};
 
-				/* I will add another var to create my "pieChart". 
+				/* I will add another var to create my "pieChart".
 				 * My pie chart needs to have a function called "getElementById "
 				 * so that I can place the chart in the page with a div that.
 				 * Obvisouly my chart will take the information from
 				 * my UAC_data and options that I have just decided on.
-				 * I will place my div to wherever I want this chart to appear. 
+				 * I will place my div to wherever I want this chart to appear.
 				 * I chose somewhere in the middle of my first article.
 				 * I may have little problem as my research was on Bosnian refugees and
 				 * my chart will be Central American minors.*/
 
-				var visualization = new google.visualization.PieChart(document.getElementById('chart_place'));
+				var visualization = new google.visualization.PieChart(document.getElementById('chart_place1'));
+				visualization.draw(UAC_data, options);
+
+				/*End of my draw function*/
+			}
+
+			function createChart2() {
+
+				/* I called on the DataTable function to make a new DataTable based on
+				 * Unaccompanied Allien Children (UAC) data from:https://www.acf.hhs.gov/orr/about/ucs/facts-and-data.*/
+				var UAC_data = new google.visualization.DataTable();
+				/* I made a column which is a string , it's name is "Country of Origin"*/
+				UAC_data.addColumn('string', 'Country of Origin');
+				/* I added a column type of which is number , labelled "Countries"*/
+				UAC_data.addColumn('number', 'Countries');
+				/*I added rows which is a list. It consists of name of the countries and percentage of children
+				 coming from these countries. So each item in my initial list are also lists on their own.*/
+
+				UAC_data.addRows([['Guatemala', 40], ['El Salvador', 34], ['Honduras', 21], ['Mexico', 3], ['All other countries', 2]]);
+
+				/*I will decide on the outline of my chart with a var.
+				 *Although my headline fails to be charming, it has a verb.
+				 *I also attempted to change the tags of title, width and height but then
+				 *my chart appared at the middle of the page. I didn't like it to be above my page like a sun
+				 *So I will the labels as they are
+				 *I changed the width to have "all other countries" in a single line. */
+				var options = {
+					'title' : 'Numbers of unaccompanied minors arriving US border increased in 2016',
+					'width' : 600,
+					'height' : 300
+				};
+
+				/* I will add another var to create my "pieChart".
+				 * My pie chart needs to have a function called "getElementById "
+				 * so that I can place the chart in the page with a div that.
+				 * Obvisouly my chart will take the information from
+				 * my UAC_data and options that I have just decided on.
+				 * I will place my div to wherever I want this chart to appear.
+				 * I chose somewhere in the middle of my first article.
+				 * I may have little problem as my research was on Bosnian refugees and
+				 * my chart will be Central American minors.*/
+
+				var visualization = new google.visualization.PieChart(document.getElementById('chart_place2'));
 				visualization.draw(UAC_data, options);
 			}
+
 		</script>
 
 		<title>My dataviz assignment</title>
 	</head>
 	<body>
-		<!-- My first article starts here. It was hard to find articles related with Bosnian and Croatian refugees in serbia. It seems there is not much reporting on this years-long issue. That's why i picked the most recent UNHCR project called "The Regional Housing Program." I  find the story which was one of our reading assignments and followed the link to the original source. The project page has a number of announcements in Bosnia and Serbia. I picked reconstructions of houses in Bosnia and take the photo inside of that story.What i was so annoyed is that i didn't know how to put space between paragraphs but the gods of internet helped me and I applied it basically every place possible. I used the image size, color and frame as we did in the class because I was afraid to mss it up.
-		-->
-		
+		<div class="container-fluid">
+			<!-- Latest compiled and minified CSS -->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-		<div class="title">
-			<a href="http://regionalhousingprogramme.org/bosnia-and-herzegovina-first-beneficiary-families-move-into-new-homes"> First families move into new homes in Bosnia two decades after the war </a>
-		</div>
-		<div>
+			<!-- My first article starts here. It was hard to find articles related with Bosnian and Croatian refugees in serbia. It seems there is not much reporting on this years-long issue. That's why i picked the most recent UNHCR project called "The Regional Housing Program." I  find the story which was one of our reading assignments and followed the link to the original source. The project page has a number of announcements in Bosnia and Serbia. I picked reconstructions of houses in Bosnia and take the photo inside of that story.What i was so annoyed is that i didn't know how to put space between paragraphs but the gods of internet helped me and I applied it basically every place possible. I used the image size, color and frame as we did in the class because I was afraid to mss it up.
+			-->
+
+			<div class="title">
+				<a href="http://regionalhousingprogramme.org/bosnia-and-herzegovina-first-beneficiary-families-move-into-new-homes"> First families move into new homes in Bosnia two decades after the war </a>
+			</div>
+			<div>
+				<p>
+					The first returnee internally displaced families in Bosnia and Herzegovina moved into their newly reconstructed houses in April of 2016 under a housing program.
+				</p>
+			</div>
+			<div>
+				<img  src="http://regionalhousingprogramme.org/wp-content/uploads/2016/12/bih-first-benef-new-home-1.jpg" />
+			</div>
+			<div>
+				<p>
+					The Regional Housing Program has been providing housing to people who fled Croatia and Bosnia and Herzegovina during the 1990 Balkan wars.
+				</p>
+			</div>
+			<div>
+				<p>
+					According to the UNHCR report, a total of 101 million euros from the Regional Housing Program has been committed to Bosnia and Herzegovina. Funding has been used to build homes for 5, 400 returnees, refugees and internally displaced people in Bosnia and Herzegovina. As part of the project, Serbia laid the foundation stone for the construction of the 235 apartments in last September. The project's Serbian part is expected to resolve the housing problems of more than 45,000 people who are living in Serbia.
+				</p>
+				<div class="row">
+					<div class="col-md-6">
+
+						<!-- My pie chart will appear here.-->
+						<div id="chart_place1"></div>
+					</div>
+
+					<!-- My second pie chart will appear here.-->
+					<div class="col-md-6">
+						<div id="chart_place2"></div>
+					</div>
+
+				</div>
+				<div>
+					<p>
+						During the conflicts of the 1990s, around 2.2 million people from Bosnia was displaced or become refugees. The number of displaced people was believed to be around 550,000 in Croatia and 540,000 in Serbia.
+					</p></p>
+				</div>
+
+				<!-- Again, as I have had difficulties in finding current stories on my research assignment, I thought a reaction piece on Karadzic verdict could be interesting, altough it is not directly related with the refugee. I got the first photo from New York Times website, trusting their photo choice. The second image is a famous one and I thought it would be good match to use Karadzic photo in the same story.
+				-->
+
+				<div
+				class="title">
+					<a href="http://www.bbc.com/news/world-europe-35896749">
+					<p>
+						Karadzic guilty verdict stirs mixed reaction from Bosniaks and Serbs
+					</p> </a>
+				</div>
+				<div>
+					<img src="https://static01.nyt.com/images/2016/03/25/world/25Karadzic-web4/25Karadzic-web4-master768.jpg" />
+				</div>
+				<div>
+					<p>
+						Former Bosnian Serb leader Radovan Karadzic has been convicted of genocide and war crimes in the Bosnian war, and sentenced to 40 years in jail in last March. His conviction caused mixed reactions among Bosniaks and Serbs. While some people welcomed the court rule, others emphasized that I will never be enough to heal the wounds that the war created in both sides.
+					</p>
+				</div>
+				<div>
+					“It doesn't matter what the verdict is at this stage as it won't give any inner peace to people here. Too much happened and I don't think people will ever move on properly,” Asim Delalic, 25 year-old Bosniak from Sarajevo said.
+				</div>
+				<div>
+					<p>
+						judges in The Hague hold Karadžić responsible for his role in lethal ethnic cleansing operations, the siege of Sarajevo and the slaughter of 8,000 Muslim men and boys in Srebrenica in 1995.
+					</p>
+				</div>
+
+				<div>
+					<img  src="https://d.ibtimes.co.uk/en/full/1447479/srebrenica-massacre.jpg?w=1180" />
+				</div>
+				<div>
+					<p>
+						Edna Siljdedic, 20 year-old Bosniak woman, and her family moved to San Francisco as refugees after the war. She expressed excitement about the verdict.“It's easy to be a pessimist, but today's conviction of Radovan Karadzic gives me hope. Despite war and genocide, we continue to stay strong and to live,” Siljdedic said.
+					</p>
+				</div>
+				<div>
+					Daniel Milosevic, 34 year-old Bosnian Serb, lives in Ohio, said the verdict is step backwards for the reconciliation of the nation and contributes the feeling that Serbs have about their side of story was never told.
+					“This verdict won't change anything. I think that wounds will never heal back home,” he noted.
+				</div>
+			</div>
+
+			<!-- This is my third kind of story. I was looking at the latest UNCHR efforts in Serbia for Bosnian and Croatians and take the information from there. For the image, I asked google's help.
+			-->
+
+			<div class="title">
+				<a href="http://reporting.unhcr.org/node/15812">
+				<p>
+					Access to basic rights for Bosnian and Croatian refugees still obstacle in Serbia
+				</p> </a>
+			</div>
+			<div><img  src= "http://3.bp.blogspot.com/-BafxH-uw5os/TgVWBZql7-I/AAAAAAAAClQ/Km4j_YD4opo/s640/Srebrenica+Refugees+4.jpg" />
+			</div>
 			<p>
-				The first returnee internally displaced families in Bosnia and Herzegovina moved into their newly reconstructed houses in April of 2016 under a housing program.
+				Despite of protracted refugee situation, access to basic rights such as free health public services in Serbia could be not possible for the country’s refugees.
 			</p>
-		</div>
-		<div>
-			<img  src="http://regionalhousingprogramme.org/wp-content/uploads/2016/12/bih-first-benef-new-home-1.jpg" />
-		</div>
-		<div>
+
 			<p>
-				The Regional Housing Program has been providing housing to people who fled Croatia and Bosnia and Herzegovina during the 1990 Balkan wars.
+				“Vulnerable refugees often live in inadequate living conditions, either in substandard private accommodation or collective centers, in remote areas, with insufficient means to provide enough means for basic needs, medical treatments and without prospects to obtain adequate and durable housing solutions on their own,” according to UNHRC.
 			</p>
-		</div>
-		<div>
+
 			<p>
-				According to the UNHCR report, a total of 101 million euros from the Regional Housing Program has been committed to Bosnia and Herzegovina. Funding has been used to build homes for 5, 400 returnees, refugees and internally displaced people in Bosnia and Herzegovina. As part of the project, Serbia laid the foundation stone for the construction of the 235 apartments in last September. The project's Serbian part is expected to resolve the housing problems of more than 45,000 people who are living in Serbia.
+				UNHCR says its office in Serbia has been advocating for the closure of refugee chapter for refugees from Croatia and Bosnia and Herzegovina and promotes the Regional Housing Project for durable solution.
 			</p>
-			<!-- My pie chart will appear here.-->
-		<div id="chart_place"></div>
-		</div>
-		<div>
-			<p>
-				During the conflicts of the 1990s, around 2.2 million people from Bosnia was displaced or become refugees. The number of displaced people was believed to be around 550,000 in Croatia and 540,000 in Serbia.
-			</p></p>
-		</div>
 
-		<!-- Again, as I have had difficulties in finding current stories on my research assignment, I thought a reaction piece on Karadzic verdict could be interesting, altough it is not directly related with the refugee. I got the first photo from New York Times website, trusting their photo choice. The second image is a famous one and I thought it would be good match to use Karadzic photo in the same story.
-		-->
-
-		<div
-			class="title"> <a href="http://www.bbc.com/news/world-europe-35896749">
-			<p>
-				Karadzic guilty verdict stirs mixed reaction from Bosniaks and Serbs
-			</p> </a>
-		</div>
-		<div>
-			<img src="https://static01.nyt.com/images/2016/03/25/world/25Karadzic-web4/25Karadzic-web4-master768.jpg" />
-		</div>
-		<div>
-			<p>
-				Former Bosnian Serb leader Radovan Karadzic has been convicted of genocide and war crimes in the Bosnian war, and sentenced to 40 years in jail in last March. His conviction caused mixed reactions among Bosniaks and Serbs. While some people welcomed the court rule, others emphasized that I will never be enough to heal the wounds that the war created in both sides.
-			</p>
-		</div>
-		<div>
-			“It doesn't matter what the verdict is at this stage as it won't give any inner peace to people here. Too much happened and I don't think people will ever move on properly,” Asim Delalic, 25 year-old Bosniak from Sarajevo said.
-		</div>
-		<div>
-			<p>
-				judges in The Hague hold Karadžić responsible for his role in lethal ethnic cleansing operations, the siege of Sarajevo and the slaughter of 8,000 Muslim men and boys in Srebrenica in 1995.
-			</p>
-		</div>
-
-		<div>
-			<img  src="https://d.ibtimes.co.uk/en/full/1447479/srebrenica-massacre.jpg?w=1180" />
-		</div>
-		<div>
-			<p>
-				Edna Siljdedic, 20 year-old Bosniak woman, and her family moved to San Francisco as refugees after the war. She expressed excitement about the verdict.“It's easy to be a pessimist, but today's conviction of Radovan Karadzic gives me hope. Despite war and genocide, we continue to stay strong and to live,” Siljdedic said.
-			</p>
-		</div>
-		<div>
-			Daniel Milosevic, 34 year-old Bosnian Serb, lives in Ohio, said the verdict is step backwards for the reconciliation of the nation and contributes the feeling that Serbs have about their side of story was never told.
-			“This verdict won't change anything. I think that wounds will never heal back home,” he noted.
-		</div>
-		</div>
-
-		<!-- This is my third kind of story. I was looking at the latest UNCHR efforts in Serbia for Bosnian and Croatians and take the information from there. For the image, I asked google's help.
-		-->
-
-		<div class="title">
-			<a href="http://reporting.unhcr.org/node/15812">
-			<p>
-				Access to basic rights for Bosnian and Croatian refugees still obstacle in Serbia
-			</p> </a>
-		</div>
-		<div><img  src= "http://3.bp.blogspot.com/-BafxH-uw5os/TgVWBZql7-I/AAAAAAAAClQ/Km4j_YD4opo/s640/Srebrenica+Refugees+4.jpg" />
-		</div>
-		<p>
-			Despite of protracted refugee situation, access to basic rights such as free health public services in Serbia could be not possible for the country’s refugees.
-		</p>
-
-		<p>
-			“Vulnerable refugees often live in inadequate living conditions, either in substandard private accommodation or collective centers, in remote areas, with insufficient means to provide enough means for basic needs, medical treatments and without prospects to obtain adequate and durable housing solutions on their own,” according to UNHRC.
-		</p>
-
-		<p>
-			UNHCR says its office in Serbia has been advocating for the closure of refugee chapter for refugees from Croatia and Bosnia and Herzegovina and promotes the Regional Housing Project for durable solution.
-		</p>
-
-		<!-- This is my last story. I took the information and numbers from a report and again used very generic photo for this one.
-		-->
+			<!-- This is my last story. I took the information and numbers from a report and again used very generic photo for this one.
+			-->
 		</div>
 
 		<div class="title">
@@ -174,22 +237,19 @@
 		<div><img src= "http://www.dw.com/image/18623827_401.jpg" />
 		</div>
 
-		<div <p>More than 35 thousand refugees from Croatia and Bosnia are still displaced in Serbia, according to Danish Refugee Council. </p></div>
+		<p>
+			More than 35 thousand refugees from Croatia and Bosnia are still displaced in Serbia, according to Danish Refugee Council.
+		</p>
+		<p>
+			There were nine collective centers in the country as of January of last year and these centers were hosting 185 Refugees from Croatia and Bosnia and 375 Internally Displaced Persons from Kosovo the council reported. According to Danish Refugee Council, refugees have been often living in poor conditions and without an adequate alternative housing solution.
+		</p>
 
-		<div>
-			<p>
-				There were nine collective centers in the country as of January of last year and these centers were hosting 185 Refugees from Croatia and Bosnia and 375 Internally Displaced Persons from Kosovo the council reported. According to Danish Refugee Council, refugees have been often living in poor conditions and without an adequate alternative housing solution.
-			</p>
-		</div>
-
-		<div>
-			<p>
-				“The number of refugees continues to reduce as a result of the local integration and return projects, as well as the Regional Housing Programme. Even though the process of voluntary repatriation has not yet been completed, it is assumed that the majority of refugees have opted for local integration,” Danish Refugee Council, says.
-			</p>
-		</div>
+		<p>
+			“The number of refugees continues to reduce as a result of the local integration and return projects, as well as the Regional Housing Programme. Even though the process of voluntary repatriation has not yet been completed, it is assumed that the majority of refugees have opted for local integration,” Danish Refugee Council, says.
+		</p>
 
 		<script type="text/javascript" src="scripts.js"></script>
-
+		</div>
 	</body>
 </html>
 
