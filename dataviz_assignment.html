@@ -47,24 +47,25 @@
 				 *my chart appared at the middle of the page. I didn't like it to be above my page like a sun
 				 *So I will the labels as they are
 				 *I changed the width to have "all other countries" in a single line. */
-				var options = {
+				var main_features = {
 					'title' : 'Numbers of unaccompanied minors arriving US border increased in 2016',
 					'width' : 600,
-					'height' : 300
+					'height' : 300,
+					'backgroundColor': '#eeeeee'
 				};
 
 				/* I will add another var to create my "pieChart".
 				 * My pie chart needs to have a function called "getElementById "
 				 * so that I can place the chart in the page with a div that.
 				 * Obvisouly my chart will take the information from
-				 * my UAC_data and options that I have just decided on.
+				 * my UAC_data and main_features that I have just decided on.
 				 * I will place my div to wherever I want this chart to appear.
 				 * I chose somewhere in the middle of my first article.
 				 * I may have little problem as my research was on Bosnian refugees and
 				 * my chart will be Central American minors.*/
 
 				var visualization = new google.visualization.PieChart(document.getElementById('chart_place1'));
-				visualization.draw(UAC_data, options);
+				visualization.draw(UAC_data, main_features);
 
 				/*End of my draw function*/
 			}
@@ -89,24 +90,25 @@
 				 *my chart appared at the middle of the page. I didn't like it to be above my page like a sun
 				 *So I will the labels as they are
 				 *I changed the width to have "all other countries" in a single line. */
-				var options = {
+				var main_features = {
 					'title' : 'Numbers of unaccompanied minors arriving US border increased in 2016',
 					'width' : 600,
-					'height' : 300
+					'height' : 300,
+					'backgroundColor': '#eeeeee'
 				};
 
 				/* I will add another var to create my "pieChart".
 				 * My pie chart needs to have a function called "getElementById "
 				 * so that I can place the chart in the page with a div that.
 				 * Obvisouly my chart will take the information from
-				 * my UAC_data and options that I have just decided on.
+				 * my UAC_data and main_features that I have just decided on.
 				 * I will place my div to wherever I want this chart to appear.
 				 * I chose somewhere in the middle of my first article.
 				 * I may have little problem as my research was on Bosnian refugees and
 				 * my chart will be Central American minors.*/
 
 				var visualization = new google.visualization.PieChart(document.getElementById('chart_place2'));
-				visualization.draw(UAC_data, options);
+				visualization.draw(UAC_data, main_features);
 			}
 
 		</script>
